@@ -1,0 +1,10 @@
+.navbar{
+    display: inline-block;
+    font-size: medium;
+}
+
+.nav li{
+    margin:5px;
+}
+
+
