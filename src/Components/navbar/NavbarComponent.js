@@ -6,13 +6,13 @@ import MemberComponent from '../members/MemberComponent';
 import PhotoComponent from '../photos/PhotoComponent';
 import ProfileComponent from '../profile/ProfileComponent';
 import RegisterComponent from '../register/RegisterComponent';
-import './navbar.css'
+import SidebarComponent from '../sidebar/SidebarComponent'
 
 function  NavbarComponent(){
     return(
         <Router>
             <div >
-            <nav class="navbar navbar-expand-lg navbar-default">
+            <nav class="navbar navbar-default">
                 <div class="container">
                 <div class="navbar-header">
                     <button
@@ -43,7 +43,9 @@ function  NavbarComponent(){
             </nav>
             </div>
 
-
+            
+           <div class="container">
+           <div class="col-md-8">
             <Switch>
                 <Route path='/' exact component={HomeComponent} />
                 <Route path='/home' exact component={HomeComponent} />
@@ -53,6 +55,13 @@ function  NavbarComponent(){
                 <Route path='/groups' component={GroupsComponent} />
                 <Route path='/register' component={RegisterComponent} />
             </Switch>
+            </div>
+
+            
+            <div class="col-md-4">
+                <SidebarComponent></SidebarComponent>
+            </div>
+           </div>
 
         </Router>
     );

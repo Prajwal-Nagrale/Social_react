@@ -1,9 +1,6 @@
 function HomeComponent(){
     return(
-        <section>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8">
+      <div>    
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">Wall</h3>
@@ -251,12 +248,7 @@ function HomeComponent(){
               </div>
             </div>
           </div>
-        </div>
-       
-       
-      </div>
-    </div>
-  </section>
+          </div>
     )
 }
 

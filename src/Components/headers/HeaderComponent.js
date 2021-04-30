@@ -1,5 +1,5 @@
-import LoginComponent from '../login/LoginComponent'
-import './header.css'
+import LoginComponent from '../login/LoginComponent';
+import './header.css';
 
 function HeaderComponent(){
         return(
@@ -12,6 +12,7 @@ function HeaderComponent(){
               />
               <span> Social Netwroking for Everyone</span>
               <LoginComponent></LoginComponent>
+              
             </div>
             
           </header>

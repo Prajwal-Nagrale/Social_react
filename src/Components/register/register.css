@@ -5,21 +5,17 @@
 	font-weight: bold;
 	text-align: center;
 	padding-top:40px;
-	margin-top:20px;
-	
+	margin-top:20px;	
 }
-
 table{
 	border-collapse: separate;
 	border-spacing: 0 15px;
 	text-align: left;
 }
-
 .center{
 	margin-left: auto;
 	margin-right: auto;
 }
-
 button{
 	background: rgb(10, 182, 10);
 	border-radius: 4px;

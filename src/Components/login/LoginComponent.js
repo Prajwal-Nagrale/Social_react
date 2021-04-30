@@ -1,6 +1,5 @@
 function LoginComponent(){
     return (
-        <div className="container">
             <form class="form-inline">
           <div class="form-group">
             <label class="sr-only" for="exampleInputEmail3"
@@ -22,14 +21,13 @@ function LoginComponent(){
               placeholder="Password"
             />
           </div>
-
-          <button type="submit" class="btn btn-default">Sign in</button>
+          
+          <button type="submit" class="btn btn-default">Sign in</button><br/>
           <div class="checkbox">
             <label> <input type="checkbox" /> Remember me </label>
           </div>
         </form>
-        
-        </div>
+     
     );
 }
 
