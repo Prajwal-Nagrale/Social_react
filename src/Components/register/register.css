@@ -5,7 +5,8 @@
 	font-weight: bold;
 	text-align: center;
 	padding-top:40px;
-	margin-top:20px;	
+	margin-top:20px;
+	padding:25px; 	
 }
 table{
 	border-collapse: separate;
@@ -16,8 +17,24 @@ table{
 	margin-left: auto;
 	margin-right: auto;
 }
-button{
+.registerbtn{
 	background: rgb(10, 182, 10);
 	border-radius: 4px;
 	color: honeydew;
+	position: relative;
+	left:17px;
+	
+}
+/* changes */
+.registerlabel {
+  width: 88px;
+  line-height: 45px;
+  margin-bottom: 12px;
+}
+
+.align{
+	position: relative;
+	text-align: left;
+	left: 150px;
+	
 }

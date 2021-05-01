@@ -1,5 +1,8 @@
 import React, { Component } from "react";   
-import './register.css'
+import './register.css';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+
 class RegistrationForm extends Component {    
   constructor(props) {    
       super(props);    
@@ -11,109 +14,88 @@ class RegistrationForm extends Component {
       };    
   
       this.initialState = this.state;    
-  }    
-  
-  handleFormValidation() {    
-      const { Name, Email, Password} = this.state;    
-      let formErrors = {};    
-      let formIsValid = true;    
-  
-
-      if (!Name) {    
-          formIsValid = false;    
-          formErrors["NameErr"] = "Name is required.";    
-      }
-      else if (!(/^[^\s][a-zA-Z\s].{1,}$/.test(Name))){
-        formIsValid = false;
-        formErrors["NameErr"] = "No spaces are allowed"
-      }
-      if (!Email) {    
-          formIsValid = false;    
-          formErrors["EmailErr"] = "Email id is required.";    
-      }    
-      else if (!(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,4}$/.test(Email))) {    
-  
-          formIsValid = false;    
-          formErrors["EmailErr"] = "Invalid email id.";    
-      } 
-      if (!Password) {    
-        formIsValid = false;    
-        formErrors["PasswordErr"] = "Password is required.";    
-      }  
-      else if(!(/^[a-zA-Z0-9]{6,}/.test(Password))){
-          formIsValid = false;
-          formErrors["PasswordErr"]= "password must be 6  characters ";
-      }
-      this.setState({ formErrors: formErrors });    
-      return formIsValid;    
-  }    
-  
-  handleChange = (e) => {    
-      const { name, value } = e.target;    
-      this.setState({ [name]: value });    
-  }    
-  
-  handleSubmit = (e) => {    
-      e.preventDefault();    
-  
-      if (this.handleFormValidation()) {    
-          alert('You have been successfully registered.')    
-          this.setState(this.initialState)    
-      }    
-  }    
-  render() {    
-    
-    const { NameErr, EmailErr,PasswordErr } = this.state.formErrors;    
+  }      
+  render() {        
 
     return (    
-        <div  class="createAccount">    
-            <h3 >Sign Up</ h3> 
-            <h6 >It's free and always wil be.</h6>   
-                <form onSubmit={this.handleSubmit}>
-                  <tabel class="center"> 
-                    <tr>    
-                        <td><label htmlFor="Name">Name</label></td>    
-                        <td><input type="text" name="Name"    
-                            value={this.state.Name}    
-                            onChange={this.handleChange}    
-                            placeholder="Your name.."    
-                            className={NameErr ? ' showError' : ''} /></td>
-                    </tr>
-                    <tr>    
-                        <td>{NameErr &&    
-                            <div style={{ color: "red", paddingBottom: 10}}>{NameErr}</div>    
-                        } </td>   
-                    </tr>    
-                    <tr>    
-                      <td><label htmlFor="Email">Email Id</label></td>    
-                      <td><input type="text" name="Email"    
-                            value={this.state.Email}    
-                            onChange={this.handleChange}    
-                            placeholder="Your email id.."    
-                            className={EmailErr ? ' showError' : ''} /></td>
-                    </tr>   
-                    <tr><td>{EmailErr &&    
-                            <div style={{ color: "red", paddingBottom: 10}}>{EmailErr}</div>    
-                        }
-                    </td></tr>
-                    <tr>    
-                       <td><label htmlFor="Password">Password</label></td>    
-                       <td><input type="password" name="Password"    
-                            value={this.state.Password}    
-                            onChange={this.handleChange}    
-                            placeholder="Your Password.."    
-                            className={PasswordErr ? ' showError' : ''} />
-                          </td>
-                    </tr>    
-                    <tr>
-                      <td>
-                        {PasswordErr && <div style={{ color: "red", paddingBottom: 10 }}>{PasswordErr}</div>}
-                      </td>
-                    </tr>
-                  </tabel>   
-                  <p><button type="submit"  >Create Account</button></p>
-                </form>    
-          </div>      
+      <div class="createAccount">
+      <h3 >Sign Up</ h3> 
+      <h6 >It's free and always wil be.</h6>   
+        <Formik  
+          initialValues={{name:"",email:"",password:""}}
+          onSubmit={(values,{setSubmitting}) =>{
+              setTimeout(()=>{
+                  console.log("Logging in ", values)
+                  setSubmitting(false);
+              },500);
+          }}
+          validationSchema={Yup.object().shape({
+              name: Yup.string()
+               .required("Name is Required"),
+              email: Yup.string()
+               .required("Email Required")
+               .matches((/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,4}$/),"Enter a valid email address"),
+              password: Yup.string()
+               .required("Enter password")
+               .min(6,"password should be 6 charectors")
+               .matches(/(?=.*[0-9])/,"password should contain at least a number")
+          })}
+          
+
+        > 
+          {props => {
+             const {
+                 values,
+                 touched,
+                 errors,
+                 isSubmitting,
+                 handleChange,
+                 handleBlur,
+                 handleSubmit
+             } = props;
+             return (
+                  <form autoComplete="off" onSubmit={handleSubmit}>
+                    <table class="center">
+                      <tr> 
+                      <td><label className="registerlabel" htmlFor="name">Name</label></td>
+                      <td><input class="form-control" type="text" value={values.name} name="name" onChange={handleChange} 
+                      onBlur={handleBlur} 
+                      placeholder="Enter your Name" />
+                       {errors.name && touched.name && (
+                           <div style={{ color: "red"}}>{errors.name}</div>
+                       )}
+                       </td>
+                       </tr>
+                      <tr> 
+                      <td><label className="registerlabel" htmlFor="email">Email</label></td>
+
+                      <td><input  class="form-control" type="text" value={values.email} name="email" onChange={handleChange} 
+                      onBlur={handleBlur} 
+                      placeholder="Enter your email" />
+                      {errors.email && touched.email && (
+                           <div style={{ color: "red"}}>{errors.email}</div>
+                       )}
+                       </td>
+                       </tr>
+                       <tr>
+                      <td><label className="registerlabel" htmlFor="password">Password</label></td>
+
+                      <td><input class="form-control" type="password" value={values.password} name="password" onChange={handleChange} 
+                      onBlur={handleBlur} 
+                       placeholder="Create your password" />
+                       {errors.password && touched.password && (
+                           <div style={{ color: "red"}} >{errors.password}</div>
+                       )}
+                       </td>
+                       </tr>
+                      <tr><td></td>
+                        <td><button className="registerbtn" type="submit" disabled={isSubmitting} >Create account</button></td></tr>
+                  </table> 
+                  </form>
+             )
+          }}
+        </Formik>
+    </div>     
     )    
 }    
 }    
