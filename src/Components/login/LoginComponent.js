@@ -1,6 +1,8 @@
 import { Component } from "react";
 import SocialService from '../../Services/Service';
 import './login.css';
+import * as Yup from "yup";
+import { Formik } from 'formik';
 
 class LoginComponent extends Component{
       constructor(props){
@@ -17,14 +19,12 @@ class LoginComponent extends Component{
       }
     }
 
-    login(e){
-      e.preventDefault();
+    login(){
       let req={
       email:document.getElementById('exampleInputEmail3').value,
       password:document.getElementById('exampleInputPassword3').value
       }
       SocialService.login(req).then((res)=>{
-        console.log(res.data);
         this.setState({email:req.email})
         this.setState({isLoggedIn:true})
         window.localStorage.setItem('token',JSON.stringify(res.data.token));
@@ -50,33 +50,79 @@ class LoginComponent extends Component{
         )
       }else{
         return (
-          <form class="form-inline"onSubmit={(e)=>this.login(e)} >
-        <div class="form-group">
-          <label class="sr-only" for="exampleInputEmail3"
-            >Email address</label
-          >
-          <input
-            type="email"
-            class="form-control"
-            id="exampleInputEmail3"
-            placeholder="Email"
-          />
-        </div>
-        <div class="form-group">
-          <label class="sr-only" for="exampleInputPassword3">Password</label>
-          <input
-            type="password"
-            class="form-control"
-            id="exampleInputPassword3"
-            placeholder="Password"
-          />
-        </div>
-        
-        <button type="submit" class="btn btn-default" >Sign in</button><br></br>
-        <div class="checkbox">
-          <label> <input type="checkbox" /> Remember me </label>
-        </div>
-      </form>
+          <Formik
+          initialValues={{ email: "", password: "" }}
+          onSubmit={(values, {setSubmitting}) => {
+            setTimeout(() => {
+              console.log("Logging in", values);
+              setSubmitting(false);
+              this.login();
+            }, 500);
+          }}
+         
+          validationSchema={Yup.object().shape({
+            email: Yup.string()
+            .required("Email Required")
+            .matches((/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,4}$/),"enter a valid email address"),
+            password: Yup.string()
+            .required("Enter password")
+            .min(6,"password should be 6 charectors")
+            .matches(/(?=.*[0-9])/,"password should contain at least a number"),
+          })}
+        >
+          {props => {
+            const {
+              values,
+              touched,
+              errors,
+              isSubmitting,
+              handleChange,
+              handleBlur,
+              handleSubmit
+            } = props;
+            return (
+              <form class="form-inline" autoComplete="off" onSubmit={handleSubmit}>
+                <div class="form-group">
+            <label class="sr-only" for="exampleInputEmail3">Email address</label>
+                  <input
+                  name="email"
+                  type="text"
+                  placeholder="Enter your email"
+                  value={values.email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  class="form-control"
+                  id="exampleInputEmail3"
+                />
+                {errors.email && touched.email && (
+                  <div style={{ color: "red"}}>{errors.email}</div>
+                )}
+          </div>
+          <div class="form-group">
+            <label class="sr-only" for="exampleInputPassword3">Password</label>
+                <input
+                  name="password"
+                  type="password"
+                  style={{ color: "black"}}
+                  placeholder="Enter your password"
+                  value={values.password}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  class="form-control"
+                  id="exampleInputPassword3"
+                />
+                {errors.password && touched.password && (
+                  <div style={{ color: "red"}} >{errors.password}</div>
+                )}
+          </div>
+          <button type="submit" class="btn btn-default" disabled={isSubmitting}>Sign in</button><br />
+          <div class="checkbox">
+            <label> <input type="checkbox" /> Remember me </label>
+          </div>
+              </form>
+            );
+          }}
+        </Formik>
   );
       }
     }

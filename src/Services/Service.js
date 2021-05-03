@@ -15,6 +15,14 @@ class SocialService{
     getProfile(email){
         return axios.get(`${Base_url}/profile/${email}`)
     }
+
+    create(req){
+        return axios.post(`${Base_url}/user`,req)
+    }
+
+    updateProfile(userName,email,city,state,gender,profession,img){
+        return axios.put(`${Base_url}/profile/${email}`,{userName,city,state,gender,profession,img})
+    }
 }
 
 export default new SocialService();

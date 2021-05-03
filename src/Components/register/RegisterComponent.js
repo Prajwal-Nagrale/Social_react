@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import './register.css';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import SocialService from '../../Services/Service';
+import Swal from 'sweetalert2';
 
 class RegistrationForm extends Component {    
   constructor(props) {    
@@ -9,12 +11,46 @@ class RegistrationForm extends Component {
       this.state = {    
           Name: '',    
           Email: '',    
-          Password: '',     
-          formErrors: {}    
+          Password: '',
+          msg:''  
       };    
   
       this.initialState = this.state;    
   }      
+
+  register(){
+    let req={
+      userName:document.getElementById('name').value,
+      email:document.getElementById('email').value,
+      password:document.getElementById('password').value
+    }
+    SocialService.create(req).then((res)=>{
+      this.setState({msg:res.data.message});
+      this.successPopup();
+    },(err)=>{
+      this.errorPopup();
+    })
+
+  }
+
+  successPopup(){
+    Swal.fire(
+      'Success',
+      this.state.msg,
+      'success'
+    )
+  }
+
+  errorPopup(){
+    Swal.fire(
+      'Erorr',
+      'Email Id alreay exists PLZ use Unique Email Id',
+      'error'
+    )
+  }
+
+
+
   render() {        
 
     return (    
@@ -27,6 +63,8 @@ class RegistrationForm extends Component {
               setTimeout(()=>{
                   console.log("Logging in ", values)
                   setSubmitting(false);
+                  this.register()
+                  
               },500);
           }}
           validationSchema={Yup.object().shape({
@@ -58,7 +96,7 @@ class RegistrationForm extends Component {
                     <table class="center">
                       <tr> 
                       <td><label className="registerlabel" htmlFor="name">Name</label></td>
-                      <td><input class="form-control" type="text" value={values.name} name="name" onChange={handleChange} 
+                      <td><input class="form-control" id="name" type="text" value={values.name} name="name" onChange={handleChange} 
                       onBlur={handleBlur} 
                       placeholder="Enter your Name" />
                        {errors.name && touched.name && (
@@ -69,7 +107,7 @@ class RegistrationForm extends Component {
                       <tr> 
                       <td><label className="registerlabel" htmlFor="email">Email</label></td>
 
-                      <td><input  class="form-control" type="text" value={values.email} name="email" onChange={handleChange} 
+                      <td><input  class="form-control" id="email" type="text" value={values.email} name="email" onChange={handleChange} 
                       onBlur={handleBlur} 
                       placeholder="Enter your email" />
                       {errors.email && touched.email && (
@@ -80,7 +118,7 @@ class RegistrationForm extends Component {
                        <tr>
                       <td><label className="registerlabel" htmlFor="password">Password</label></td>
 
-                      <td><input class="form-control" type="password" value={values.password} name="password" onChange={handleChange} 
+                      <td><input class="form-control" id="password" type="password" value={values.password} name="password" onChange={handleChange} 
                       onBlur={handleBlur} 
                        placeholder="Create your password" />
                        {errors.password && touched.password && (
