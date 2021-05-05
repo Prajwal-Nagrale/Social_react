@@ -12,6 +12,10 @@ class SocialService{
         return axios.post(`${Base_url}/user/login`,req)
     }
 
+    addFriend(email,friendEmail){
+        return axios.put(`${Base_url}/profile/friend/${email}`,{friendEmail:friendEmail})
+    }
+    
     getProfile(email){
         return axios.get(`${Base_url}/profile/${email}`)
     }

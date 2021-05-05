@@ -10,7 +10,7 @@ function HeaderComponent(){
                 alt="DCX"
                 className="logo"
               />
-              <span> Social Netwroking for Everyone</span>
+              <span> Social Networking for Everyone</span>
               <LoginComponent></LoginComponent>
               
             </div>

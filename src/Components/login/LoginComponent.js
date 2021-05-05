@@ -59,6 +59,8 @@ class LoginComponent extends Component{
               this.login();
             }, 500);
           }}
+
+          
          
           validationSchema={Yup.object().shape({
             email: Yup.string()

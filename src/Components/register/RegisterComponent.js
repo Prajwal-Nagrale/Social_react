@@ -49,8 +49,9 @@ class RegistrationForm extends Component {
     )
   }
 
-
-
+  checkemail(value){
+    console.log(value);
+  }
   render() {        
 
     return (    
@@ -61,21 +62,24 @@ class RegistrationForm extends Component {
           initialValues={{name:"",email:"",password:""}}
           onSubmit={(values,{setSubmitting}) =>{
               setTimeout(()=>{
-                  console.log("Logging in ", values)
                   setSubmitting(false);
                   this.register()
                   
               },500);
           }}
+
+          onChange={console.log('changes')}
+
           validationSchema={Yup.object().shape({
               name: Yup.string()
-               .required("Name is Required"),
+               .required("Name is Required")
+               .min(3,"Name should be of 3 Characters "),
               email: Yup.string()
                .required("Email Required")
                .matches((/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,4}$/),"Enter a valid email address"),
               password: Yup.string()
                .required("Enter password")
-               .min(6,"password should be 6 charectors")
+               .min(6,"password should be 6 characters")
                .matches(/(?=.*[0-9])/,"password should contain at least a number")
           })}
           
@@ -87,7 +91,9 @@ class RegistrationForm extends Component {
                  touched,
                  errors,
                  isSubmitting,
-                 handleChange,
+                 handleChange=(e)=>{
+                    this.checkemail(e.target.value);
+                 },
                  handleBlur,
                  handleSubmit
              } = props;

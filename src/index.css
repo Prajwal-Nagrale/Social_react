@@ -344,7 +344,7 @@ input[type=radio] {
 }
 
 .modal-backdrop.show {
-  opacity: .5
+  opacity: .2
 }
 
 .modal-header {
