@@ -58,32 +58,39 @@ class RegistrationForm extends Component {
       <div class="createAccount">
       <h3 >Sign Up</ h3> 
       <h6 >It's free and always wil be.</h6>   
-        <Formik  
-          initialValues={{name:"",email:"",password:""}}
+      <Formik  
+          initialValues={{name:"",email:"",password:"",conformpassword:""}}
           onSubmit={(values,{setSubmitting}) =>{
               setTimeout(()=>{
+                  console.log("Logging in ", values)
                   setSubmitting(false);
                   this.register()
                   
               },500);
           }}
-
-          onChange={console.log('changes')}
-
           validationSchema={Yup.object().shape({
               name: Yup.string()
                .required("Name is Required")
-               .min(3,"Name should be of 3 Characters "),
+               .min(3,"Invalid name")
+               .matches(/([^\s][a-zA-Z\s]).{1,}$/,"no spaces allowed"),
               email: Yup.string()
                .required("Email Required")
-               .matches((/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,4}$/),"Enter a valid email address"),
+               .email('Email is invalid')
+               .matches(""),
               password: Yup.string()
                .required("Enter password")
-               .min(6,"password should be 6 characters")
-               .matches(/(?=.*[0-9])/,"password should contain at least a number")
+               .min(6,"password should be 6 charectors")
+               .matches(/(?=.*[0-9])/,"password should contain at least a number"),
+               conformpassword: Yup.string()
+               .when("password", {is: val => (val && val.length > 0 ? true : false),
+                then: Yup.string().oneOf(
+                  [Yup.ref("password")],
+                  "Both password need to be the same"
+                )
+               })
           })}
           
-
+ 
         > 
           {props => {
              const {
@@ -129,6 +136,17 @@ class RegistrationForm extends Component {
                        placeholder="Create your password" />
                        {errors.password && touched.password && (
                            <div style={{ color: "red"}} >{errors.password}</div>
+                       )}
+                       </td>
+
+                       </tr>
+                       <tr>
+                         <td><label  className="registerlabel" htmlFor="password">Confirm</label></td>
+                         <td><input class="form-control" id="password" type="password" value={values.conformpassword} name="conformpassword" onChange={handleChange} 
+                      onBlur={handleBlur} 
+                       placeholder="Re-enter your password" />
+                       {errors.conformpassword && touched.conformpassword && (
+                           <div style={{ color: "red"}} >{errors.conformpassword}</div>
                        )}
                        </td>
                        </tr>

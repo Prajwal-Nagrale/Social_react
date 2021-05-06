@@ -41,7 +41,7 @@ class MemberComponent extends Component {
 
   handlePageChange(pageNumber) {
     console.log(pageNumber)
-    let last = pageNumber.selected+1 * this.state.perpage;
+    let last = (pageNumber.selected+1 )* this.state.perpage;
     const first = last - this.state.perpage;
     console.log(`active page is ${pageNumber}`);
     this.setState({ activePage: pageNumber.selected +1});
@@ -54,11 +54,11 @@ class MemberComponent extends Component {
   componentDidMount() {
     let last = this.state.activePage * this.state.perpage;
     const first = last - this.state.perpage;
-
     SocialService.getAllProfiles().then((res) => {
       this.setState({ profiles: res.data.message });
+      this.setLgShow(false);
+      this.setState({profiles:this.state.profiles.filter((p)=>p.email!==this.state.email)})
       this.setState({ data: this.state.profiles.slice(first, last) });
-      this.setLgShow(false)
     });
     // this.state.pages = this.state.profiles.slice(first,last)
     //      console.log(this.state.pages)
@@ -72,15 +72,17 @@ class MemberComponent extends Component {
 
   render() {
     let lgShow=this.state.lgShow;
+    
     if (this.state.email)
       return (
         <div class="members">
           <h1 class="page-header">Members</h1>
           <div>
             {this.state.data.map((profile) => (
+      
               <div class="row member-row">
                 <div class="col-md-3">
-                  <img src={profile.img} alt="user" class="img-thumbnail" />
+                  <img src={profile.img} alt={profile.img} class="img-thumbnail" />
                   <div class="text-center">{profile.userName}</div>
                 </div>
                 <div class="col-md-3">
@@ -129,7 +131,7 @@ class MemberComponent extends Component {
                 </p>
                 </div>
               </div>
-            ))}
+              ))}
           </div>
           <ReactPaginate
             previousLabel={"Prev"}

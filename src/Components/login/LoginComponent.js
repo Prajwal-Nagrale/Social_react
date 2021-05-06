@@ -29,7 +29,7 @@ class LoginComponent extends Component{
         this.setState({isLoggedIn:true})
         window.localStorage.setItem('token',JSON.stringify(res.data.token));
         window.localStorage.setItem('user',JSON.stringify(req.email));
-        
+        window.location.reload();
       }).catch((error)=>{
         console.log(error.message);
       })
@@ -39,6 +39,7 @@ class LoginComponent extends Component{
       e.preventDefault();
       this.setState({isLoggedIn:false})
       window.localStorage.clear();
+      window.location.reload();
     }
 
     render(){

@@ -15,6 +15,10 @@ class SocialService{
     addFriend(email,friendEmail){
         return axios.put(`${Base_url}/profile/friend/${email}`,{friendEmail:friendEmail})
     }
+
+    addPhoto(email,img){
+        return axios.put(`${Base_url}/profile/photo/${email}`,{photo:img})
+    }
     
     getProfile(email){
         return axios.get(`${Base_url}/profile/${email}`)
