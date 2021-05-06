@@ -82,6 +82,7 @@ class RegistrationForm extends Component {
                .min(6,"password should be 6 charectors")
                .matches(/(?=.*[0-9])/,"password should contain at least a number"),
                conformpassword: Yup.string()
+               .required("Re-enter password")
                .when("password", {is: val => (val && val.length > 0 ? true : false),
                 then: Yup.string().oneOf(
                   [Yup.ref("password")],
@@ -97,7 +98,6 @@ class RegistrationForm extends Component {
                  values,
                  touched,
                  errors,
-                 isSubmitting,
                  handleChange=(e)=>{
                     this.checkemail(e.target.value);
                  },
@@ -151,7 +151,7 @@ class RegistrationForm extends Component {
                        </td>
                        </tr>
                       <tr><td></td>
-                        <td><button className="registerbtn" type="submit" disabled={isSubmitting} >Create account</button></td></tr>
+                        <td><button className="registerbtn" type="submit" disabled={!values.password || !values.name || !values.email || !values.conformpassword} >Create account</button></td></tr>
                   </table> 
                   </form>
              )

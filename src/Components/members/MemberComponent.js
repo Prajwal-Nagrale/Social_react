@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import SocialService from "../../Services/Service";
 import ReactPaginate from "react-paginate";
 import { Modal, Button } from "react-bootstrap";
-import emailjs from 'emailjs-com';
 
 class MemberComponent extends Component {
   constructor(props) {
@@ -95,27 +94,27 @@ class MemberComponent extends Component {
     let mailShow=this.state.mailShow;
     if (this.state.email)
       return (
-        <div class="members">
-          <h1 class="page-header">Members</h1>
+        <div className="members">
+          <h1 className="page-header">Members</h1>
           <div>
             {this.state.data.map((profile) => (
       
-              <div class="row member-row">
-                <div class="col-md-3">
-                  <img src={profile.img} alt={profile.img} class="img-thumbnail" />
-                  <div class="text-center">{profile.userName}</div>
+              <div className="row member-row">
+                <div className="col-md-3">
+                  <img src={profile.img} alt={profile.img} className="img-thumbnail" />
+                  <div className="text-center">{profile.userName}</div>
                 </div>
-                <div class="col-md-3">
+                <div className="col-md-3">
                   <p>
-                    <a onClick={() => this.addFriend(profile.email)} class="btn btn-success btn-block">
-                      <i class="fa fa-user"></i> Add Friend
+                    <a onClick={() => this.addFriend(profile.email)} className="btn btn-success btn-block">
+                      <i className="fa fa-user"></i> Add Friend
                     </a>
                   </p>
                 </div>
-                <div class="col-md-3">
+                <div className="col-md-3">
                   <p>
-                    <a onClick={()=> this.showEmail(profile.email)} class="btn btn-default btn-block">
-                      <i class="fa fa-envelope"></i> Send Message
+                    <a onClick={()=> this.showEmail(profile.email)} className="btn btn-default btn-block">
+                      <i className="fa fa-envelope"></i> Send Message
                     </a>
                     <Modal size="lg"
                   show={mailShow}
@@ -150,9 +149,9 @@ class MemberComponent extends Component {
                 </Modal>
                   </p>
                 </div>
-                <div class="col-md-3">
+                <div className="col-md-3">
                   <p>
-                <a onClick={() => this.viewMember(profile.email) } class="btn btn-primary btn-block"><i class="fa fa-pencil"></i> View Profile</a>
+                <a onClick={() => this.viewMember(profile.email) } className="btn btn-primary btn-block"><i className="fa fa-pencil"></i> View Profile</a>
                 <Modal size="lg"
                   show={lgShow}
                   centered
@@ -166,7 +165,7 @@ class MemberComponent extends Component {
                 </Modal.Header>
                 <Modal.Body>
                       <div>
-                        <p><img src={this.state.viewimg} class="img-thumbnail" /></p>
+                        <p><img src={this.state.viewimg} className="img-thumbnail" /></p>
                         <p><strong>Name : </strong>{this.state.viewuserName}</p>
                         <p><strong>Email : </strong>{this.state.viewemail}</p>
                         <p><strong>City : </strong>{this.state.viewcity}</p>
@@ -200,7 +199,7 @@ class MemberComponent extends Component {
       );
     return (
       <div>
-        <h1 class="page-header">Not Logged in</h1>
+        <h1 className="page-header">Not Logged in</h1>
       </div>
     );
   }

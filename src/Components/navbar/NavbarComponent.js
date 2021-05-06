@@ -29,33 +29,33 @@ class  NavbarComponent extends Component{
         return(
             <Router>
                 <div >
-                <nav class="navbar navbar-default">
-                    <div class="container">
-                    <div class="navbar-header">
+                <nav className="navbar navbar-default">
+                    <div className="container">
+                    <div className="navbar-header">
                         <button
                         type="button"
-                        class="navbar-toggle collapsed"
+                        className="navbar-toggle collapsed"
                         data-toggle="collapse"
                         data-target="#navbar"
                         aria-expanded="false"
                         aria-controls="navbar"
                         >
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
+                        <span className="sr-only">Toggle navigation</span>
+                        <span className="icon-bar"></span>
+                        <span className="icon-bar"></span>
+                        <span className="icon-bar"></span>
                         </button>
                     </div>
-                        <div id="navbar" class="collapse navbar-collapse">
-                            <ul class="nav navbar-nav" >
-                                <li className="nav-item"><Link class="nav-link " to="/home">Home</Link></li>
-                                <li className="nav-item"><Link class="nav-link" to="/members">Members</Link></li>
-                                <li className="nav-item"><Link class="nav-link" to="/groups">Groups</Link></li>
-                                <li className="nav-item"><Link class="nav-link" to="/photos">Photos</Link></li>
-                                <li className="nav-item"><Link class="nav-link" to="/profile">Profile</Link></li>
+                        <div id="navbar" className="collapse navbar-collapse">
+                            <ul className="nav navbar-nav" >
+                                <li className="nav-item"><Link className="nav-link " to="/home">Home</Link></li>
+                                <li className="nav-item"><Link className="nav-link" to="/members">Members</Link></li>
+                                <li className="nav-item"><Link className="nav-link" to="/groups">Groups</Link></li>
+                                <li className="nav-item"><Link className="nav-link" to="/photos">Photos</Link></li>
+                                <li className="nav-item"><Link className="nav-link" to="/profile">Profile</Link></li>
                                { 
                                this.state.verify===false?
-                               <li className="nav-item"><Link class="nav-link" to="/register">Register</Link></li>:null
+                               <li className="nav-item"><Link className="nav-link" to="/register">Register</Link></li>:null
                                }
                             </ul>
                         </div>
@@ -64,8 +64,8 @@ class  NavbarComponent extends Component{
                 </div>
     
                 
-               <div class="container">
-               <div class="col-md-8">
+               <div className="container">
+               <div className="col-md-8">
                 <Switch>
                     <Route exact path='/'  component={HomeComponent} />
                     <Route path='/home'>
@@ -108,7 +108,7 @@ class  NavbarComponent extends Component{
                 </div>
     
                 
-                <div class="col-md-4">
+                <div className="col-md-4">
                     <SidebarComponent></SidebarComponent>
                 </div>
                </div>

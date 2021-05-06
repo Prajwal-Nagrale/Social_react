@@ -45,7 +45,7 @@ class LoginComponent extends Component{
     render(){
       if(this.state.isLoggedIn){
         return(
-          <div class="element">
+          <div className="element">
               <a onClick={(e)=>this.signout(e)}>SignOut</a>
           </div>
         )
@@ -84,9 +84,9 @@ class LoginComponent extends Component{
               handleSubmit
             } = props;
             return (
-              <form class="form-inline" autoComplete="off" onSubmit={handleSubmit}>
-                <div class="form-group">
-            <label class="sr-only" for="exampleInputEmail3">Email address</label>
+              <form className="form-inline" autoComplete="off" onSubmit={handleSubmit}>
+                <div className="form-group">
+            <label className="sr-only" htmlFor="exampleInputEmail3">Email address</label>
                   <input
                   name="email"
                   type="text"
@@ -94,15 +94,15 @@ class LoginComponent extends Component{
                   value={values.email}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  class="form-control"
+                  className="form-control"
                   id="exampleInputEmail3"
                 />
                 {errors.email && touched.email && (
                   <div style={{ color: "red"}}>{errors.email}</div>
                 )}
           </div>
-          <div class="form-group">
-            <label class="sr-only" for="exampleInputPassword3">Password</label>
+          <div className="form-group">
+            <label className="sr-only" htmlFor="exampleInputPassword3">Password</label>
                 <input
                   name="password"
                   type="password"
@@ -111,15 +111,15 @@ class LoginComponent extends Component{
                   value={values.password}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  class="form-control"
+                  className="form-control"
                   id="exampleInputPassword3"
                 />
                 {errors.password && touched.password && (
                   <div style={{ color: "red"}} >{errors.password}</div>
                 )}
           </div>
-          <button type="submit" class="btn btn-default" disabled={isSubmitting}>Sign in</button><br />
-          <div class="checkbox">
+          <button type="submit" className="btn btn-default" disabled={!values.password ||!values.email}>Sign in</button><br />
+          <div className="checkbox">
             <label> <input type="checkbox" /> Remember me </label>
           </div>
               </form>

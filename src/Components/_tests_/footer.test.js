@@ -1,10 +1,10 @@
 const { render } = require("@testing-library/react");
-import HeaderComponent from '../headers/HeaderComponent'
+const { default:FooterComponent  } = require("../footers/FooterComponent");
 
 describe("Testing", ()=>
 {
   it('it is ',()=>{
     const div=document.createElement("div");
-    render(<HeaderComponent></HeaderComponent>)
+    render(<FooterComponent></FooterComponent>)
   })
 })

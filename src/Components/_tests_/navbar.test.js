@@ -1,10 +1,10 @@
 const { render } = require("@testing-library/react");
-import HeaderComponent from '../headers/HeaderComponent'
+const { default: NavbarComponent } = require("../navbar/NavbarComponent");
 
 describe("Testing", ()=>
 {
   it('it is ',()=>{
     const div=document.createElement("div");
-    render(<HeaderComponent></HeaderComponent>)
+    render(<NavbarComponent></NavbarComponent>)
   })
 })

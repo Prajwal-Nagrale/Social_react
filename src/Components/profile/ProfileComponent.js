@@ -125,8 +125,8 @@ stateSelect(e) {
       let lgShow=this.state.lgShow;
       // const { country, region } = this.state;
       return(
-        <div class="row">
-                  <Button onClick={() => this.setLgShow(true)}><i class="fa fa-pencil"></i> Edit Profile</Button>
+        <div className="row">
+                  <Button onClick={() => this.setLgShow(true)}><i className="fa fa-pencil"></i> Edit Profile</Button>
                   <Modal
                     size="lg"
                     show={lgShow}
@@ -149,7 +149,7 @@ stateSelect(e) {
                       })
                   }}/><br/>
                    <label>State</label>
-                  <select  class="form-control" placeholder={this.state.pState} value={this.state.pState} onChange={(e)=> this.stateSelect(e)}>
+                  <select  className="form-control" placeholder={this.state.pState} value={this.state.pState} onChange={(e)=> this.stateSelect(e)}>
                   {this.state.state_arr.map(state_arr => (
                     <option key={state_arr} value={state_arr}>
                       {state_arr}
@@ -157,7 +157,7 @@ stateSelect(e) {
                  ))}
                  </select><br/>
                     <label>City</label>
-                    <select class="form-control" placeholder={this.state.city} value={this.state.city} onChange={(e)=>{
+                    <select className="form-control" placeholder={this.state.city} value={this.state.city} onChange={(e)=>{
                       this.setState({
                         city:e.target.value
                       })
@@ -179,7 +179,7 @@ stateSelect(e) {
                   }}/><br/>
                      
                     <label>Gender</label>
-                    <select class="form-control" placeholder={this.state.gender} value={this.state.gender} onChange={(e)=>{
+                    <select className="form-control" placeholder={this.state.gender} value={this.state.gender} onChange={(e)=>{
                       this.setState({
                         gender:e.target.value
                       })
@@ -201,13 +201,13 @@ stateSelect(e) {
                     </Modal.Footer>
                   </Modal>
 
-            <div class="profile">
-              <h1 class="page-header">{this.state.userName}</h1>
-              <div class="row">
-                <div class="col-md-4">
-                  <img src={this.state.img} class="img-thumbnail" />
+            <div className="profile">
+              <h1 className="page-header">{this.state.userName}</h1>
+              <div className="row">
+                <div className="col-md-4">
+                  <img src={this.state.img} className="img-thumbnail" />
                 </div>
-                <div class="col-md-8">
+                <div className="col-md-8">
                   <ul>
                     <li><strong>Name: </strong>{this.state.userName} </li>
                     <li><strong>Email Address: </strong>{this.state.email} </li>
@@ -221,34 +221,34 @@ stateSelect(e) {
                 </div>
               </div>
               <br />
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="panel panel-default">
-                    <div class="panel-heading">
-                      <h3 class="panel-title">Profile Wall</h3>
+              <div className="row">
+                <div className="col-md-12">
+                  <div className="panel panel-default">
+                    <div className="panel-heading">
+                      <h3 className="panel-title">Profile Wall</h3>
                     </div>
-                    <div class="panel-body">
+                    <div className="panel-body">
                       <form>
-                        <div class="form-group">
+                        <div className="form-group">
                           <textarea
-                            class="form-control"
+                            className="form-control"
                             placeholder="Write on the wall"
                           ></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-default">
+                        <button type="submit" className="btn btn-default">
                           Submit
                         </button>
-                        <div class="pull-right">
-                          <div class="btn-group">
-                            <button type="button" class="btn btn-default">
-                              <i class="fa fa-pencil"></i> Text
+                        <div className="pull-right">
+                          <div className="btn-group">
+                            <button type="button" className="btn btn-default">
+                              <i className="fa fa-pencil"></i> Text
                             </button>
-                            <button type="button" class="btn btn-default">
-                              <i class="fa fa-file-image-o"></i> Image
+                            <button type="button" className="btn btn-default">
+                              <i className="fa fa-file-image-o"></i> Image
                             </button>
-                            <button type="button" class="btn btn-default">
-                              <i class="fa fa-file-video-o"></i> Video
+                            <button type="button" className="btn btn-default">
+                              <i className="fa fa-file-video-o"></i> Video
                             </button>
                           </div>
                         </div>

@@ -1,10 +1,10 @@
 const { render } = require("@testing-library/react");
-import HeaderComponent from '../headers/HeaderComponent'
+const { default: LoginComponent } = require("../login/LoginComponent");
 
 describe("Testing", ()=>
 {
   it('it is ',()=>{
     const div=document.createElement("div");
-    render(<HeaderComponent></HeaderComponent>)
+    render(<LoginComponent></LoginComponent>)
   })
 })

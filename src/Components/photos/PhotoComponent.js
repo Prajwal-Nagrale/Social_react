@@ -72,33 +72,36 @@ class PhotoComponent extends Component{
       let lgShow=this.state.lgShow;
       return(
       
-        <div class="row">
+        <div className="row">
           <label>Upload Photos</label>
             <table>
-              <tr>
+             <tbody>
+             <tr>
                 <td></td>
-                <td><input type="file" className="from-control" onChange={(e)=>this.onFileSelected(e)} /></td>
+                <td><input type="file" className="from-control" accept="image/*" onChange={(e)=>this.onFileSelected(e)} /></td>
                 <td>
   
-                   <a disabled={this.state.disabled} onClick={()=>this.updatePhoto()} class="btn btn-primary btn-block">Upload</a>
+                   <a disabled={this.state.disabled} onClick={()=>this.updatePhoto()} className="btn btn-primary btn-block">Upload</a>
               
                 </td>
               </tr>
+             </tbody>
             </table>
 
                 
-            <h1 class="page-header">Photos</h1>
+            <h1 className="page-header">Photos</h1>
             {
               this.state.photos.map((photo)=>(
                  
                 
-                <ul class="photos gallery-parent">
+                <ul className="photos gallery-parent">
               <li>
                 <a onClick={(e) => this.check(e)}>
                   <img
                     src={photo}
                     alt={photo}
-                    class="img-thumbnail-photo"
+                    className="img-thumbnail-photo"
+                    accept="image/*"
                 />
                 </a>
                 <Modal size="lg"
@@ -115,7 +118,7 @@ class PhotoComponent extends Component{
            <Modal.Body>
            <img 
            src={this.state.modalimg}
-            class="modpic"
+            className="modpic"
            />
            </Modal.Body>
            <Modal.Footer>

@@ -1,29 +1,29 @@
 function HomeComponent(){
     return(
       <div>    
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">Wall</h3>
+          <div className="panel panel-default">
+            <div className="panel-heading">
+              <h3 className="panel-title">Wall</h3>
             </div>
-            <div class="panel-body">
+            <div className="panel-body">
               <form>
-                <div class="form-group">
+                <div className="form-group">
                   <textarea
-                    class="form-control"
+                    className="form-control"
                     placeholder="Write on the wall"
                   ></textarea>
                 </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-                <div class="pull-right">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-default">
-                      <i class="fa fa-pencil"></i> Text
+                <button type="submit" className="btn btn-default">Submit</button>
+                <div className="pull-right">
+                  <div className="btn-group">
+                    <button type="button" className="btn btn-default">
+                      <i className="fa fa-pencil"></i> Text
                     </button>
-                    <button type="button" class="btn btn-default">
-                      <i class="fa fa-file-image-o"></i> Image
+                    <button type="button" className="btn btn-default">
+                      <i className="fa fa-file-image-o"></i> Image
                     </button>
-                    <button type="button" class="btn btn-default">
-                      <i class="fa fa-file-video-o"></i> Video
+                    <button type="button" className="btn btn-default">
+                      <i className="fa fa-file-video-o"></i> Video
                     </button>
                   </div>
                 </div>
@@ -31,20 +31,20 @@ function HomeComponent(){
             </div>
           </div>
   
-          <div class="panel panel-default post">
-            <div class="panel-body">
-              <div class="row">
-                <div class="col-sm-2">
-                  <a class="post-avatar thumbnail" href="profile.html"
-                    ><img src="/assets/img/user.png" alt="User" />
-                    <div class="text-center">DevUser1</div>
+          <div className="panel panel-default post">
+            <div className="panel-body">
+              <div className="row">
+                <div className="col-sm-2">
+                  <a className="post-avatar thumbnail" href="profile.html"
+                    ><img alt="pic" src="/assets/img/user.png"  />
+                    <div className="text-center">DevUser1</div>
                   </a>
-                  <div class="likes text-center">7 Likes</div>
+                  <div className="likes text-center">7 Likes</div>
                 </div>
                
-                <div class="col-sm-10">
-                  <div class="bubble">
-                    <div class="pointer">
+                <div className="col-sm-10">
+                  <div className="bubble">
+                    <div className="pointer">
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing
                         elit. In tincidunt eget ante eget feugiat. Praesent
@@ -52,75 +52,75 @@ function HomeComponent(){
                         est in ante sodales, sit amet consectetur leo commodo.
                       </p>
                     </div>
-                    <div class="pointer-border"></div>
+                    <div className="pointer-border"></div>
                   </div>
                   
-                  <p class="post-actions">
+                  <p className="post-actions">
                     <a href="#">Comment</a> - <a href="#">Like</a> -
                     <a href="#">Follow</a> - <a href="#">Share</a>
                   </p>
-                  <div class="comment-form">
-                    <form class="form-inline">
-                      <div class="form-group">
+                  <div className="comment-form">
+                    <form className="form-inline">
+                      <div className="form-group">
                         <input
                           type="text"
-                          class="form-control"
+                          className="form-control"
                           id="exampleInputName1"
                           placeholder="Enter Comment"
                         />
                       </div>
-                      <button type="submit" class="btn btn-default">
+                      <button type="submit" className="btn btn-default">
                         Add
                       </button>
                     </form>
                   </div>
                   
-                  <div class="clearfix"></div>
+                  <div className="clearfix"></div>
   
-                  <div class="comments">
-                    <div class="comment">
-                      <a class="comment-avatar pull-left" href="#"
-                        ><img src="/assets/img/user.png"
+                  <div className="comments">
+                    <div className="comment">
+                      <a className="comment-avatar pull-left" href="#"
+                        ><img alt="pic" src="/assets/img/user.png"
                       /></a>
-                      <div class="comment-text">
+                      <div className="comment-text">
                         <p>
                           Sed convallis est in ante sodales, sit amet
                           consectetur leo commodo.
                         </p>
                       </div>
                     </div>
-                    <div class="clearfix"></div>
-                    <div class="comment">
-                      <a class="comment-avatar pull-left" href="#"
-                        ><img src="/assets/img/user.png"
+                    <div className="clearfix"></div>
+                    <div className="comment">
+                      <a className="comment-avatar pull-left" href="#"
+                        ><img alt="pic" src="/assets/img/user.png"
                       /></a>
-                      <div class="comment-text">
+                      <div className="comment-text">
                         <p>
                           Sed convallis est in ante sodales, sit amet
                           consectetur leo commodo.
                         </p>
                       </div>
                     </div>
-                    <div class="clearfix"></div>
+                    <div className="clearfix"></div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="panel panel-default post">
-            <div class="panel-body">
-              <div class="row">
-                <div class="col-sm-2">
-                  <a class="post-avatar thumbnail" href="profile.html"
-                    ><img src="/assets/img/user.png" />
-                    <div class="text-center">DevUser2</div>
+          <div className="panel panel-default post">
+            <div className="panel-body">
+              <div className="row">
+                <div className="col-sm-2">
+                  <a className="post-avatar thumbnail" href="profile.html"
+                    ><img alt="pic" src="/assets/img/user.png" />
+                    <div className="text-center">DevUser2</div>
                   </a>
-                  <div class="likes text-center">2 Likes</div>
+                  <div className="likes text-center">2 Likes</div>
                 </div>
                
-                <div class="col-sm-10">
-                  <div class="bubble">
-                    <div class="pointer">
+                <div className="col-sm-10">
+                  <div className="bubble">
+                    <div className="pointer">
                       <p>
                         Adipiscing elit. In tincidunt eget ante eget feugiat.
                         Praesent adipiscing tortor eu tincidunt tempus. Sed
@@ -128,63 +128,63 @@ function HomeComponent(){
                         leo commodo.
                       </p>
                     </div>
-                    <div class="pointer-border"></div>
+                    <div className="pointer-border"></div>
                   </div>
                 
-                  <p class="post-actions">
+                  <p className="post-actions">
                     <a href="#">Comment</a> - <a href="#">Like</a> -
                     <a href="#">Follow</a> - <a href="#">Share</a>
                   </p>
-                  <div class="comment-form">
-                    <form class="form-inline">
-                      <div class="form-group">
+                  <div className="comment-form">
+                    <form className="form-inline">
+                      <div className="form-group">
                         <input
                           type="text"
-                          class="form-control"
+                          className="form-control"
                           id="exampleInputName2"
                           placeholder="Enter Comment"
                         />
                       </div>
-                      <button type="submit" class="btn btn-default">
+                      <button type="submit" className="btn btn-default">
                         Add
                       </button>
                     </form>
                   </div>
                   
-                  <div class="clearfix"></div>
+                  <div className="clearfix"></div>
   
-                  <div class="comments">
-                    <div class="comment">
-                      <a class="comment-avatar pull-left" href="#"
-                        ><img src="/assets/img/user.png"
+                  <div className="comments">
+                    <div className="comment">
+                      <a className="comment-avatar pull-left" href="#"
+                        ><img alt="pic" src="/assets/img/user.png"
                       /></a>
-                      <div class="comment-text">
+                      <div className="comment-text">
                         <p>
                           Sed convallis est in ante sodales, sit amet
                           consectetur leo commodo.
                         </p>
                       </div>
                     </div>
-                    <div class="clearfix"></div>
+                    <div className="clearfix"></div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="panel panel-default post">
-            <div class="panel-body">
-              <div class="row">
-                <div class="col-sm-2">
-                  <a class="post-avatar thumbnail" href="profile.html"
-                    ><img src="/assets/img/user.png" />
-                    <div class="text-center">DevUser3</div>
+          <div className="panel panel-default post">
+            <div className="panel-body">
+              <div className="row">
+                <div className="col-sm-2">
+                  <a className="post-avatar thumbnail" href="profile.html"
+                    ><img alt="pic" src="/assets/img/user.png" />
+                    <div className="text-center">DevUser3</div>
                   </a>
-                  <div class="likes text-center">2 Likes</div>
+                  <div className="likes text-center">2 Likes</div>
                 </div>
               
-                <div class="col-sm-10">
-                  <div class="bubble">
-                    <div class="pointer">
+                <div className="col-sm-10">
+                  <div className="bubble">
+                    <div className="pointer">
                       <p>
                         Adipiscing elit. In tincidunt eget ante eget feugiat.
                         Praesent adipiscing tortor eu tincidunt tempus. Sed
@@ -192,57 +192,57 @@ function HomeComponent(){
                         leo commodo.
                       </p>
                     </div>
-                    <div class="pointer-border"></div>
+                    <div className="pointer-border"></div>
                   </div>
                  
-                  <p class="post-actions">
+                  <p className="post-actions">
                     <a href="#">Comment</a> - <a href="#">Like</a> -
                     <a href="#">Follow</a> - <a href="#">Share</a>
                   </p>
-                  <div class="comment-form">
-                    <form class="form-inline">
-                      <div class="form-group">
+                  <div className="comment-form">
+                    <form className="form-inline">
+                      <div className="form-group">
                         <input
                           type="text"
-                          class="form-control"
+                          className="form-control"
                           id="exampleInputName3"
                           placeholder="Enter Comment"
                         />
                       </div>
-                      <button type="submit" class="btn btn-default">
+                      <button type="submit" className="btn btn-default">
                         Add
                       </button>
                     </form>
                   </div>
                 
-                  <div class="clearfix"></div>
+                  <div className="clearfix"></div>
   
-                  <div class="comments">
-                    <div class="comment">
-                      <a class="comment-avatar pull-left" href="#"
-                        ><img src="/assets/img/user.png"
+                  <div className="comments">
+                    <div className="comment">
+                      <a className="comment-avatar pull-left" href="#"
+                        ><img alt="pic" src="/assets/img/user.png"
                       /></a>
-                      <div class="comment-text">
+                      <div className="comment-text">
                         <p>
                           Sed convallis est in ante sodales, sit amet
                           consectetur leo commodo.
                         </p>
                       </div>
                     </div>
-                    <div class="clearfix"></div>
+                    <div className="clearfix"></div>
   
-                    <div class="comment">
-                      <a class="comment-avatar pull-left" href="#"
-                        ><img src="/assets/img/user.png"
+                    <div className="comment">
+                      <a className="comment-avatar pull-left" href="#"
+                        ><img alt="pic" src="/assets/img/user.png"
                       /></a>
-                      <div class="comment-text">
+                      <div className="comment-text">
                         <p>
                           Sed convallis est in ante sodales, sit amet
                           consectetur leo commodo.
                         </p>
                       </div>
                     </div>
-                    <div class="clearfix"></div>
+                    <div className="clearfix"></div>
                   </div>
                 </div>
               </div>
