@@ -6,7 +6,7 @@ function HeaderComponent(){
             <header>
             <div className="container">
               <img
-                src="/assets/img/cglogo.png"
+                src="/logo512.png"
                 alt="DCX"
                 className="logo"
               />

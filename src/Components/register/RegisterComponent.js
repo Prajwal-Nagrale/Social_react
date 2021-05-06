@@ -72,7 +72,7 @@ class RegistrationForm extends Component {
               name: Yup.string()
                .required("Name is Required")
                .min(3,"Invalid name")
-               .matches(/([^\s][a-zA-Z\s]).{1,}$/,"no spaces allowed"),
+               .matches(/([^\s][a-zA-Z\s]).{1,}$/,"No spaces allowed"),
               email: Yup.string()
                .required("Email Required")
                .email('Email is invalid')

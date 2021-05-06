@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import SocialService from "../../Services/Service";
 import ReactPaginate from "react-paginate";
 import { Modal, Button } from "react-bootstrap";
+import emailjs from 'emailjs-com';
 
 class MemberComponent extends Component {
   constructor(props) {
@@ -10,12 +11,25 @@ class MemberComponent extends Component {
     this.state = {
       profiles: [],
       lgShow:false,
+      mailShow:false,
+      sending:"",
       email: "",
       activePage: 1,
       perpage: 4,
       data: [],
       viewemail:"",viewuserName:"",viewimg:"assets/img/user.png",viewcity:"",viewpstate:"",viewprofession:"",viewgender:""
     };
+  }
+
+  sendEmail(e) {
+    e.preventDefault();
+    this.setMailShow(false);
+
+  }
+
+  showEmail(email){
+    this.setState({sending:email})
+    this.setMailShow(true);
   }
 
 
@@ -48,9 +62,15 @@ class MemberComponent extends Component {
     this.setState({ data: this.state.profiles.slice(first, last) });
     console.log(this.state.pages);
   }
+
   setLgShow(val){
-          this.setState({lgShow:val})
-        }
+    this.setState({lgShow:val})
+  }
+
+  setMailShow(val){
+    this.setState({mailShow:val})
+  }
+
   componentDidMount() {
     let last = this.state.activePage * this.state.perpage;
     const first = last - this.state.perpage;
@@ -72,7 +92,7 @@ class MemberComponent extends Component {
 
   render() {
     let lgShow=this.state.lgShow;
-    
+    let mailShow=this.state.mailShow;
     if (this.state.email)
       return (
         <div class="members">
@@ -94,9 +114,40 @@ class MemberComponent extends Component {
                 </div>
                 <div class="col-md-3">
                   <p>
-                    <a href="#" class="btn btn-default btn-block">
+                    <a onClick={()=> this.showEmail(profile.email)} class="btn btn-default btn-block">
                       <i class="fa fa-envelope"></i> Send Message
                     </a>
+                    <Modal size="lg"
+                  show={mailShow}
+                  centered
+                  animation={false}
+                  onHide={()=> this.setMailShow(false)}
+                  aria-labelledby="example-modal-sizes-title-lg">
+                <Modal.Header closeButton>
+                <Modal.Title id="example-modal-sizes-title-lg">
+                  Message
+                </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <form onSubmit={(e)=>this.sendEmail(e)}>
+                      <div>
+                          <div className="col-8 form-group mx-auto">
+                            <input type="text" className="form-control" placeholder="From" value={this.state.email} name="from" />
+                          </div>
+                          <div className="col-8 form-group mx-auto">
+                            <input type="text" className="form-control" placeholder="To" value={this.state.sending} name="toemail" />
+                          </div>
+                          <div className="col-8 form-group mx-auto">
+                            <textarea className="form-control" rows="8" placeholder="Compose Email" name="message" />
+                          </div>
+                          <div className="col-8 form-group mx-auto">
+                            <input type="submit" className="btn btn-info" value="Send Message" />
+                          </div>
+                      </div>
+                  </form>
+                </Modal.Body>
+          
+                </Modal>
                   </p>
                 </div>
                 <div class="col-md-3">

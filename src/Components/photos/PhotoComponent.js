@@ -79,9 +79,9 @@ class PhotoComponent extends Component{
                 <td></td>
                 <td><input type="file" className="from-control" onChange={(e)=>this.onFileSelected(e)} /></td>
                 <td>
-               
-                  <a disabled={this.state.disabled} onClick={()=>this.updatePhoto()} class="btn btn-primary btn-block">Upload</a>
-                 
+  
+                   <a disabled={this.state.disabled} onClick={()=>this.updatePhoto()} class="btn btn-primary btn-block">Upload</a>
+              
                 </td>
               </tr>
             </table>
