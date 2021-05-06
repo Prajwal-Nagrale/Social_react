@@ -1,5 +1,6 @@
 import { Component } from "react";
 import SocialService from '../../Services/Service';
+import { Modal, Button } from "react-bootstrap";
 import './photo.css';
 
 class PhotoComponent extends Component{
@@ -10,8 +11,14 @@ class PhotoComponent extends Component{
       img:"",
       email:"",
       photos:[],
-      disabled:true
+      lgShow:false,
+      disabled:true,
+      modalimg:"",
     }
+  }
+
+  setLgShow(val){
+    this.setState({lgShow:val})
   }
 
   componentDidUpdate(){
@@ -40,6 +47,17 @@ class PhotoComponent extends Component{
     this.setState({disabled:false})
   }
 
+  check(e){
+    this.setState({modalimg:e.target.alt})
+    this.setLgShow(true);
+  }
+
+  deletePhoto(){
+    SocialService.deletePhoto(this.state.email,this.state.modalimg).then((res)=>{
+      this.setLgShow(false)
+    })
+  }
+
   updatePhoto(){
     SocialService.addPhoto(this.state.email,this.state.img).then((res)=>{
       this.setState({img:""});
@@ -51,7 +69,7 @@ class PhotoComponent extends Component{
   } 
 
     render(){
-      
+      let lgShow=this.state.lgShow;
       return(
       
         <div class="row">
@@ -72,16 +90,43 @@ class PhotoComponent extends Component{
             <h1 class="page-header">Photos</h1>
             {
               this.state.photos.map((photo)=>(
+                 
+                
                 <ul class="photos gallery-parent">
               <li>
-                <a href={photo} data-toggle="lightbox">
+                <a onClick={(e) => this.check(e)}>
                   <img
                     src={photo}
                     alt={photo}
                     class="img-thumbnail-photo"
-                /></a>
+                />
+                </a>
+                <Modal size="lg"
+             show={lgShow}
+             centered
+             animation={false}
+             onHide={()=> this.setLgShow(false)}
+             aria-labelledby="example-modal-sizes-title-lg">
+           <Modal.Header closeButton>
+           <Modal.Title id="example-modal-sizes-title-lg">
+             Photo
+           </Modal.Title>
+           </Modal.Header>
+           <Modal.Body>
+           <img 
+           src={this.state.modalimg}
+            class="modpic"
+           />
+           </Modal.Body>
+           <Modal.Footer>
+   <Button onClick={() => this.setLgShow(false)}>Close</Button>
+   <Button onClick={() => this.deletePhoto()}>Delete</Button>
+ </Modal.Footer>
+           </Modal>
               </li>
             </ul>
+             
+             
               ))
             }
           </div>

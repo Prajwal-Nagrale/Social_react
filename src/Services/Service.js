@@ -19,6 +19,10 @@ class SocialService{
     addPhoto(email,img){
         return axios.put(`${Base_url}/profile/photo/${email}`,{photo:img})
     }
+
+    deletePhoto(email,img){
+        return axios.put(`${Base_url}/profile/removephoto/${email}`,{photo:img})
+    }
     
     getProfile(email){
         return axios.get(`${Base_url}/profile/${email}`)
