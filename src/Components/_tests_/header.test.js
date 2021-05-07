@@ -5,6 +5,6 @@ describe("Testing", ()=>
 {
   it('it is ',()=>{
     const div=document.createElement("div");
-    render(<HeaderComponent></HeaderComponent>)
+    render(<HeaderComponent></HeaderComponent>,div)
   })
 })

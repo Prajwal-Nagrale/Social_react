@@ -16,24 +16,24 @@ class SocialService{
         return axios.put(`${Base_url}/profile/friend/${email}`,{friendEmail:friendEmail})
     }
 
-    addPhoto(email,img){
-        return axios.put(`${Base_url}/profile/photo/${email}`,{photo:img})
+    addPhoto(email,selectedImage){
+        return axios.put(`${Base_url}/profile/photo/${email}`,{photo:selectedImage})
     }
 
-    deletePhoto(email,img){
-        return axios.put(`${Base_url}/profile/removephoto/${email}`,{photo:img})
+    deletePhoto(email,selectedImage){
+        return axios.put(`${Base_url}/profile/removephoto/${email}`,{photo:selectedImage})
     }
     
     getProfile(email){
         return axios.get(`${Base_url}/profile/${email}`)
     }
 
-    create(req){
+    createNewUser(req){
         return axios.post(`${Base_url}/user`,req)
     }
 
-    updateProfile(userName,email,city,state,gender,profession,img){
-        return axios.put(`${Base_url}/profile/${email}`,{userName,city,state,gender,profession,img})
+    updateProfile(userName,email,city,state,gender,profession,profileImage){
+        return axios.put(`${Base_url}/profile/${email}`,{userName,city,state,gender,profession,profileImage})
     }
 }
 

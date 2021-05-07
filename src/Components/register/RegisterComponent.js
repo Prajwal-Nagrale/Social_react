@@ -18,13 +18,13 @@ class RegistrationForm extends Component {
       this.initialState = this.state;    
   }      
 
-  register(){
+  registerNewUser(){
     let req={
       userName:document.getElementById('name').value,
       email:document.getElementById('email').value,
       password:document.getElementById('password').value
     }
-    SocialService.create(req).then((res)=>{
+    SocialService.createNewUser(req).then((res)=>{
       this.setState({msg:res.data.message});
       this.successPopup();
     },(err)=>{
@@ -49,9 +49,7 @@ class RegistrationForm extends Component {
     )
   }
 
-  checkemail(value){
-    console.log(value);
-  }
+
   render() {        
 
     return (    
@@ -64,7 +62,7 @@ class RegistrationForm extends Component {
               setTimeout(()=>{
                   console.log("Logging in ", values)
                   setSubmitting(false);
-                  this.register()
+                  this.registerNewUser()
                   
               },500);
           }}
@@ -98,9 +96,7 @@ class RegistrationForm extends Component {
                  values,
                  touched,
                  errors,
-                 handleChange=(e)=>{
-                    this.checkemail(e.target.value);
-                 },
+                 handleChange,
                  handleBlur,
                  handleSubmit
              } = props;

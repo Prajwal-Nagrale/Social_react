@@ -2,6 +2,11 @@
     height: 150px;
 }
 
+.img-thumbnail-photo-modal{
+    height: 200px;
+}
+
+
 .modpic{
     position: relative;
     left: 130px;

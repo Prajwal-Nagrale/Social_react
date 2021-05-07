@@ -8,12 +8,12 @@ class PhotoComponent extends Component{
       
     super(props);
     this.state={
-      img:"",
+      selectedImage:"",
       email:"",
       photos:[],
       lgShow:false,
       disabled:true,
-      modalimg:"",
+      modalImage:"",
     }
   }
 
@@ -43,24 +43,24 @@ class PhotoComponent extends Component{
   }
   
   onFileSelected(e){
-    this.setState({img:'assets/img/'+e.target.files[0].name});
+    this.setState({selectedImage:'assets/img/'+e.target.files[0].name});
     this.setState({disabled:false})
   }
 
   check(e){
-    this.setState({modalimg:e.target.alt})
+    this.setState({modalImage:e.target.alt})
     this.setLgShow(true);
   }
 
   deletePhoto(){
-    SocialService.deletePhoto(this.state.email,this.state.modalimg).then((res)=>{
+    SocialService.deletePhoto(this.state.email,this.state.modalImage).then((res)=>{
       this.setLgShow(false)
     })
   }
 
   updatePhoto(){
-    SocialService.addPhoto(this.state.email,this.state.img).then((res)=>{
-      this.setState({img:""});
+    SocialService.addPhoto(this.state.email,this.state.selectedImage).then((res)=>{
+      this.setState({selectedImage:""});
       this.setState({disabled:true});
       this.render();
     }).catch((err)=>{
@@ -117,7 +117,7 @@ class PhotoComponent extends Component{
            </Modal.Header>
            <Modal.Body>
            <img 
-           src={this.state.modalimg}
+           src={this.state.modalImage}
             className="modpic"
            />
            </Modal.Body>

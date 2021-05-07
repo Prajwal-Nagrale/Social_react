@@ -55,18 +55,19 @@ class ProfileComponent extends Component{
         state_arr:[],
         lgShow:false,
         isLoggedIn:false,
-        email:"",userName:"",img:"assets/img/user.png",city:"",pState:"",profession:"",gender:"",
+        email:"",userName:"",profileImage:"assets/img/user.png",city:"",profileState:"",profession:"",gender:"",
         Gender_arr : ["","Male", "Female", "Others"]
       }
     }
     
 
-stateSelect(e) {
-  this.setState({pState : e.target.value})
- var index = 1+state_arr.indexOf(e.target.value)
-  var city_arr  = s_a[index].split("|");
-  this.setState({s_a:city_arr})
-}
+    stateSelect(e) {
+      this.setState({profileState : e.target.value})
+      var index = 1+state_arr.indexOf(e.target.value)
+      var city_arr  = s_a[index].split("|");
+      this.setState({s_a:city_arr})
+    }
+
     setLgShow(val){
       this.setState({lgShow:val})
     }
@@ -76,10 +77,10 @@ stateSelect(e) {
         this.state.userName,
         this.state.email,
         this.state.city,
-        this.state.pState,
+        this.state.profileState,
         this.state.gender,
         this.state.profession,
-        this.state.img
+        this.state.profileImage
       ).then((res)=>{
         // console.log(res.data)
       })
@@ -94,12 +95,10 @@ stateSelect(e) {
         SocialService.getProfile(email).then((res)=>{
           this.setState({userName:res.data.message[0].userName})
           this.setState({city:res.data.message[0].city})
-          this.setState({pState:res.data.message[0].state})
+          this.setState({profileState:res.data.message[0].state})
           this.setState({gender:res.data.message[0].gender})
           this.setState({profession:res.data.message[0].profession})
-          // this.setState({country:res.data.message[0].country})
-          // this.setState({region:res.data.message[0].region})
-          this.setState({img:res.data.message[0].img})
+          this.setState({profileImage:res.data.message[0].profileImage})
           this.setState({email})
           this.setLgShow(false)
           var index = 1+state_arr.indexOf(res.data.message[0].state)
@@ -114,7 +113,7 @@ stateSelect(e) {
   
 
     onFileSelected(e){
-      this.setState({img:'assets/img/'+e.target.files[0].name});
+      this.setState({profileImage:'assets/img/'+e.target.files[0].name});
     }
 
     onGenderSelected(e){
@@ -149,7 +148,7 @@ stateSelect(e) {
                       })
                   }}/><br/>
                    <label>State</label>
-                  <select  className="form-control" placeholder={this.state.pState} value={this.state.pState} onChange={(e)=> this.stateSelect(e)}>
+                  <select  className="form-control" placeholder={this.state.profileState} value={this.state.profileState} onChange={(e)=> this.stateSelect(e)}>
                   {this.state.state_arr.map(state_arr => (
                     <option key={state_arr} value={state_arr}>
                       {state_arr}
@@ -205,14 +204,14 @@ stateSelect(e) {
               <h1 className="page-header">{this.state.userName}</h1>
               <div className="row">
                 <div className="col-md-4">
-                  <img src={this.state.img} className="img-thumbnail" />
+                  <img src={this.state.profileImage} className="img-thumbnail" />
                 </div>
                 <div className="col-md-8">
                   <ul>
                     <li><strong>Name: </strong>{this.state.userName} </li>
                     <li><strong>Email Address: </strong>{this.state.email} </li>
                     <li><strong>City: </strong>{this.state.city} </li>
-                    <li><strong>State: </strong>{this.state.pState} </li>
+                    <li><strong>State: </strong>{this.state.profileState} </li>
                     {/* <li><strong>Country: </strong>{this.state.country}</li>
                     <li><strong>Region: </strong>{this.state.region} </li> */}
                     <li><strong>Gender: </strong>{this.state.gender} </li>

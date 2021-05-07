@@ -16,7 +16,7 @@ class MemberComponent extends Component {
       activePage: 1,
       perpage: 4,
       data: [],
-      viewemail:"",viewuserName:"",viewimg:"assets/img/user.png",viewcity:"",viewpstate:"",viewprofession:"",viewgender:""
+      viewEmail:"",viewuserName:"",viewImage:"assets/img/user.png",viewCity:"",viewState:"",viewProfession:"",viewgender:""
     };
   }
 
@@ -42,12 +42,12 @@ class MemberComponent extends Component {
     
     SocialService.getProfile(email).then((res)=>{
       this.setState({viewuserName:res.data.message[0].userName})
-      this.setState({viewemail:res.data.message[0].email})
-      this.setState({viewcity:res.data.message[0].city})
-      this.setState({viewpstate:res.data.message[0].state})
+      this.setState({viewEmail:res.data.message[0].email})
+      this.setState({viewCity:res.data.message[0].city})
+      this.setState({viewState:res.data.message[0].state})
       this.setState({viewgender:res.data.message[0].gender})
-      this.setState({viewprofession:res.data.message[0].profession})
-      this.setState({viewimg:res.data.message[0].img})
+      this.setState({viewProfession:res.data.message[0].profession})
+      this.setState({viewImage:res.data.message[0].profileImage})
     })
     this.setLgShow(true)
   }
@@ -101,7 +101,7 @@ class MemberComponent extends Component {
       
               <div className="row member-row">
                 <div className="col-md-3">
-                  <img src={profile.img} alt={profile.img} className="img-thumbnail" />
+                  <img src={profile.profileImage} alt={profile.profileImage} height="200" width="150" className="img-thumbnail" />
                   <div className="text-center">{profile.userName}</div>
                 </div>
                 <div className="col-md-3">
@@ -165,12 +165,12 @@ class MemberComponent extends Component {
                 </Modal.Header>
                 <Modal.Body>
                       <div>
-                        <p><img src={this.state.viewimg} className="img-thumbnail" /></p>
+                        <p><img src={this.state.viewImage} className="img-thumbnail-photo-modal" /></p>
                         <p><strong>Name : </strong>{this.state.viewuserName}</p>
-                        <p><strong>Email : </strong>{this.state.viewemail}</p>
-                        <p><strong>City : </strong>{this.state.viewcity}</p>
-                        <p><strong>State : </strong>{this.state.viewpstate}</p>
-                        <p><strong>Profession : </strong>{this.state.viewprofession}</p>
+                        <p><strong>Email : </strong>{this.state.viewEmail}</p>
+                        <p><strong>City : </strong>{this.state.viewCity}</p>
+                        <p><strong>State : </strong>{this.state.viewState}</p>
+                        <p><strong>Profession : </strong>{this.state.viewProfession}</p>
                         <p><strong>Gender : </strong>{this.state.viewgender}</p>
                       </div>
                 </Modal.Body>
